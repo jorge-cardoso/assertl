@@ -1,0 +1,24 @@
+{
+  "scopeName": "source.assertl.rst.injection",
+  "injectionSelector": "L:source.rst -comment, L:source.restructuredtext -comment, L:text.restructuredtext -comment, L:text.rst -comment",
+  "patterns": [
+    {
+      "begin": "(?i)^(\\s*)(\\.\\.\\s+code-block::)\\s+(assertl)\\b",
+      "beginCaptures": {
+        "2": {
+          "name": "keyword.other.directive.restructuredtext"
+        },
+        "3": {
+          "name": "variable.parameter.restructuredtext"
+        }
+      },
+      "end": "^(?!\\s*$|\\1[ \\t]+)",
+      "contentName": "source.assertl",
+      "patterns": [
+        {
+          "include": "source.assertl"
+        }
+      ]
+    }
+  ]
+}

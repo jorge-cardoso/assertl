@@ -1,3 +1,14 @@
+
+
+# VS Code Extension
+node_modules/
+out/
+dist/
+*.vsix
+.vscode-test/
+*.log
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

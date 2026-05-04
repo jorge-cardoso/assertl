@@ -1,0 +1,138 @@
+?start: block_expression
+
+// -------------------- Statements --------------------
+
+?block_expression: or_expression (block_separator or_expression)* block_separator?
+ 
+block_separator: "," | NEWLINE
+
+
+// LOGICAL OPERATORS
+
+?or_expression: and_expression (OR_CONNECTIVE and_expression)*
+
+?and_expression: term (AND_CONNECTIVE NEWLINE* term)*
+
+OR_CONNECTIVE: "Or" | "||"
+AND_CONNECTIVE: "And" | "Also" | "&&"
+
+// -------------------- Terms --------------------
+
+?term: quantifier? subject predicate
+    | block
+
+// CONTINUATION (PREDICATES OR BLOCKS)
+
+predicate: operator value unless_clause?
+            | block
+
+block: "(" NEWLINE* block_expression NEWLINE* ")"
+      | "(" block_expression ")"
+
+// -------------------- Quantified blocks --------------------
+
+quantifier: "For" quantifier_core
+          | quantifier_core
+
+quantifier_core: "All"
+               | "Any"
+               | "Some"
+               | "Each"
+               | "No"
+               | "Exactly One"
+               | "At Least One"
+
+// -------------------- Assertions --------------------
+
+subject: "The" selector_chain
+       | selector_chain
+
+unless_clause: "Unless" block_expression
+
+// -------------------- Selectors --------------------
+
+selector: selector_item filter_clause?
+
+selector_item: STRING
+              | slice_specifier
+              | STRING slice_specifier
+
+slice_specifier: "[" access_list "]"
+
+access_list: access_item ("," access_item)*
+
+access_item: NUMBER
+           | NUMBER range_separator NUMBER
+           | STRING
+
+range_separator: "-" | ".." | "..." | ":"
+
+filter_clause: "Where" selector_chain operator value
+
+// -------------------- Property chain --------------------
+
+selector_chain: selector (("Of"|"In") selector)*
+
+// -------------------- Operators --------------------
+
+operator: OPERATOR
+
+OPERATOR: "Is Not Equal To"
+        | "Does Not Match Pattern"
+        | "Does Not Match"
+        | "Does Not Contain"
+        | "Contains None Of"
+        | "Is Not Compatible With"
+        | "Is Greater Than"
+        | "Is Less Than"    
+        | "Is At Least"
+        | "Is At Most"
+        | "Is Older Than"
+        | "Is Newer Than"
+        | "Matches Pattern"
+        | "Is Compatible With"
+        | "Contains All"
+        | "Has Size Of"
+        | "Length Is"
+        | "Is One Of"
+        | "Is Among"
+        | "Is Between"
+        | "Is Within"
+        | "Has Items"
+        | "Includes"
+        | "Contains"
+        | "Matches"
+        | "Is Not"
+        | "Equals"
+        | ">="
+        | "<="
+        | "!="
+        | ">"
+        | "<"
+        | "="
+        | "Is"
+
+// -------------------- Values --------------------
+
+?value: NUMBER
+      | STRING
+      | NULL
+      | slice_specifier
+
+// -------------------- Lexical rules --------------------
+
+STRING: ESCAPED_STRING
+NUMBER: /-?[0-9]+(\.[0-9]+)?/
+NULL: "Null"
+    | "None"
+    | "Empty"
+
+NEWLINE: /(\r?\n)+/
+
+// -------------------- Whitespace --------------------
+
+%import common.ESCAPED_STRING
+%import common.WS_INLINE
+
+%ignore WS_INLINE
+

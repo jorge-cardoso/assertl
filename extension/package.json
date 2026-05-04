@@ -1,0 +1,68 @@
+{
+  "name": "assertl",
+  "displayName": "assertl",
+  "description": "assertl",
+  "version": "0.0.4",
+  "engines": {
+    "vscode": "^1.118.0"
+  },
+  "publisher": "local",
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:restructuredtext"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "assertl",
+        "aliases": [
+          "assertl",
+          "AssertL"
+        ],
+        "extensions": [
+          ".asl"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "assertl",
+        "scopeName": "source.assertl",
+        "path": "./assertl.tmLanguage.json"
+      },
+      {
+        "scopeName": "source.assertl.rst.injection",
+        "path": "./assertl-injection.tmLanguage.json",
+        "injectTo": [
+          "source.rst",
+          "source.restructuredtext",
+          "text.restructuredtext",
+          "text.rst"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.115.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.3"
+  }
+}

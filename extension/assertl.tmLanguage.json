@@ -1,0 +1,80 @@
+{
+  "scopeName": "source.assertl",
+  "scopeNameComment": "source.assertl",
+  "name": "AssertL",
+  "patterns": [
+    { "include": "#keywords" },
+    { "include": "#operators" },
+    { "include": "#connectives" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.assertl",
+          "match": "\\b(For|All|Any|Some|Each|No|Exactly One|At Least One|The|Unless|Where|Of|In|Null|None|Empty)\\b"
+        }
+      ]
+    },
+
+    "connectives": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.assertl",
+          "match": "\\b(Or|And|Also)\\b|\\|\\||&&"
+        }
+      ]
+    },
+
+
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.assertl",
+          "match": "\\b(Is\\s+Not\\s+Equal\\s+To|Does\\s+Not\\s+Match\\s+Pattern|Does\\s+Not\\s+Match|Does\\s+Not\\s+Contain|Contains\\s+None\\s+Of|Is\\s+Not\\s+Compatible\\s+With|Is\\s+Greater\\s+Than|Is\\s+Less\\s+Than|Is\\s+At\\s+Least|Is\\s+At\\s+Most|Is\\s+Older\\s+Than|Is\\s+Newer\\s+Than|Matches\\s+Pattern|Is\\s+Compatible\\s+With|Contains\\s+All|Has\\s+Size\\s+Of|Length\\s+Is|Is\\s+One\\s+Of|Is\\s+Among|Is\\s+Between|Is\\s+Within|Has\\s+Items|Includes|Contains|Matches|Is\\s+Not|Equals|Is|>=|<=|!=|>|<|=)\\b"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.assertl",
+          "match": "-?\\b[0-9]+(\\.[0-9]+)?\\b"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.assertl",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.assertl",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.assertl",
+          "match": "[,()\\[\\]]"
+        },
+        {
+          "name": "punctuation.separator.range.assertl",
+          "match": "(\\.{2,3}|-|:)"
+        }
+      ]
+    }
+  }
+}
