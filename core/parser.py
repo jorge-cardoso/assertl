@@ -102,7 +102,7 @@ class ASTTransformer(Transformer):
 # Public API
 # ----------------------------
 
-class VallParser:
+class AssertlParser:
     def __init__(self, grammar_file="grammar.lark"):
         self._parser = build_parser(grammar_file)
         self._transformer = ASTTransformer()
@@ -119,10 +119,10 @@ class VallParser:
 if __name__ == "__main__":
     import json
 
-    vp = VallParser("assertl.lark")
+    vp = AssertlParser("assertl.lark")
 
     # Load statements from file
-    examples = load_statements("examples.asl")
+    examples = load_statements("../samples/examples.asl")
 
     for idx, example in enumerate(examples, start=1):
         try:

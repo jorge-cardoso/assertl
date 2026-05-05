@@ -136,3 +136,5 @@ NEWLINE: /(\r?\n)+/
 
 %ignore WS_INLINE
 
+COMMENT: /#[^\n]*\n?/
+%ignore COMMENT

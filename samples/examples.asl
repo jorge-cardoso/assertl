@@ -1,3 +1,4 @@
+# This file contains example ASL statements for testing and demonstration purposes.
 For All "cpus" (
     "core_count" >= 72 And "status" = "healthy"
 )
