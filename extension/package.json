@@ -6,7 +6,11 @@
   "engines": {
     "vscode": "^1.118.0"
   },
-  "publisher": "local",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jorge-cardoso/assertl.git"
+  },
+  "publisher": "assertl",
   "license": "MIT",
   "categories": [
     "Other"
