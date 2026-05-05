@@ -33,16 +33,20 @@ Paste the following code into `release.yml`. This configuration will trigger eve
             run: npm install
 
         - name: Package Extension
-            run: npx @vscode/vsce package -o my-extension.vsix
+            run: npx @vscode/vsce package -o assertl-extension.vsix
 
         - name: Upload VSIX Artifact
             uses: actions/upload-artifact@v4
             with:
             name: vscode-extension-package
-            path: my-extension.vsix
+            path: assertl-extension.vsix
 
-
-
+        - name: Create GitHub Release
+                uses: softprops/action-gh-release@v2
+                if: startsWith(github.ref, 'refs/tags/')
+                with:
+                files: assertl-extension.vsix
+                
 ### How to get your file after a commit:
 1.  **Commit and Push:** Push your changes to the `main` branch.
 2.  **Go to GitHub:** Open your repository in your browser.
