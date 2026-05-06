@@ -15,6 +15,8 @@ ASSERTL provides a **natural-language–influenced assertion syntax** for expres
 
 The language prioritizes **interpretability and robustness over strict formal precision**, allowing flexible expression of validation logic across diverse data formats.
 
+ASSERTL is a complete declarative query language and works as a contract. You provide the criteria, and the verification engine guarantees it will find the data and verify the result. It is a complete query language because it allows for Selection (identifiers), Filtering (where), Quantification (for each/some), and Validation (assertions).
+
 Example
 ~~~~~~~
 
