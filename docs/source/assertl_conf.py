@@ -67,8 +67,10 @@ class ASSERTLLexer(RegexLexer):
             (r'\|\||&&', Operator),
 
             # -------------------- Quantifiers --------------------
-            (words(QUANTIFIERS, suffix=r'\b'), Keyword),
-
+            # ``QUANTIFIERS`` is already an alternation regex, so it is used
+            # verbatim; ``words()`` would treat the string as a character list.
+            (QUANTIFIERS + r'\b', Keyword),            
+            
             # -------------------- Operators (multi-word first!) --------------------
             (OPERATORS, Keyword),
 
