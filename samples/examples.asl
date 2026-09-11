@@ -70,6 +70,8 @@ For All The "firmware_modules" Of "NICs" (
 ---
 "Temperature" Is Greater Than 72.5
 ---
+"Temperature" Is Not Greater Than 92.5
+---
 "Status" Is Null
 ---
 "Owner" Is None
