@@ -262,6 +262,7 @@ Exactly One "Admin User" In "Current Session" (
 "Kernel Version" Is Not "5.4.0-generic" Also
 "Build Date" Of "Current Image" Is Newer Than "2023-01-01" Also
 "Environment" Is Not Equal To "Staging"
+"Environment" Is Equal To "Dev"
 ---
 For No "Cluster" In "Global Fleet" (
     For Any "App Group" In "Namespaces" (
