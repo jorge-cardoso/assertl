@@ -79,6 +79,7 @@ operator: OPERATOR
 
 OPERATOR: "Is Not Equal To"
         | "Is Equal To"
+        | "Is Not Greater Than"
         | "Does Not Match Pattern"
         | "Does Not Match"
         | "Does Not Contain"
